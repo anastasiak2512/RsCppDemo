@@ -1,1 +1,1 @@
-# RSCPPDemo
+# ReSharper C++ Basic Demo
