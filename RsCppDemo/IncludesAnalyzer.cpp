@@ -3,4 +3,11 @@
 
 #include "stdafx.h"
 #include "TODO.h"
-#include "GuardsGeneration.h"
+#include "Distance.h"
+
+void check()
+{
+	Distance d;
+	d.measure();
+
+}
