@@ -9,13 +9,13 @@ typedef struct PersonData {
 	const char *name;
 } PersonData;
 
-void callPerson(PersonData* p1, PersonData *p) {
+void callPerson(PersonData *p) {
 	//TODO:
 }
 
 void usage() {
 	PersonData p = { 64, 0, "Bjarne Stroustrup" };
-	callPerson(nullptr, &p);
+	callPerson(&p);
 }
 
 // Introduce field for error message text, use Ctrl + Alt + D
@@ -40,9 +40,9 @@ public:
 };
 
 // Introduce namespace alias for One::Two, use Ctrl + Shift + R
-namespace One
+namespace one
 {
-	namespace Two
+	namespace two
 	{
 		int ten = 10;
 		inline void foo()
@@ -54,8 +54,8 @@ namespace One
 
 inline int test()
 {
-	One::Two::foo();
-	return One::Two::ten;
+	one::two::foo();
+	return one::two::ten;
 }
 
 // Inline Variable for result, use Ctrl + Alt + N
@@ -76,7 +76,8 @@ class InlineVariable
 // Convert if to ternary operator and back, use Alt + Enter on if
 int convertIfTernary(bool cond)
 {
-	return cond ? 100 : -100;
+	if (cond) return 100;
+	else return -100;
 }
 
 

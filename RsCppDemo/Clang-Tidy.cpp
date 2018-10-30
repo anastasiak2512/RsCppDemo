@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include <functional>
-#include <vector>
 #include <iostream>
 
 // Modernize: lambda instead of bind
@@ -25,16 +24,28 @@ private:
 
 // Google checks: explicit constructor
 namespace my_namespace {
-	class My_Class {
+	class my_class {
 	public:
-		My_Class(int x) :x(x) {
+		my_class(const int x) :x_(x) {
 
 		}
-		My_Class* operator&() {
+		my_class* operator&() {
 			return this;
 		}
 	private:
-		int x;
+		int x_;
 	};
+}
+
+// ReSharper disable once CppInconsistentNaming
+struct S {
+	int x;
+	operator bool() const { return true; }
+};
+
+bool f() {
+	const S a{ 1 };
+	const S b{ 2 };
+	return a == b;
 }
 

@@ -7,7 +7,7 @@
 #include <string>
 
 /// Code comments
-class DocClass
+class doc_class
 {
 	//..
 };
@@ -102,3 +102,11 @@ void inferTypeConstexpr()
 CLASS_DEF(A)
 CLASS_DEF(B)
 CLASS_DEF(C)
+
+// Understanding of the fold expressions and ability to calculate it.
+template < typename T, typename ...Args >
+constexpr T bitmask(Args... args) {
+	return static_cast<T>(((1 << args) | ...));
+}
+
+constexpr auto mask = bitmask<uint8_t>(1, 4, 5);

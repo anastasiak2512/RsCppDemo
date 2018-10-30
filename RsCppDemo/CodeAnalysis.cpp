@@ -2,6 +2,7 @@
 // It provides a bunch of C++ specific checks and catches a lot of typical faults.  
 
 #include "stdafx.h"
+#include <string>
 
 // Quick-fix to generate a missing default case in a switch statement
 inline const char* assessOperatingSystem(int windowsVersion) {
@@ -12,40 +13,39 @@ inline const char* assessOperatingSystem(int windowsVersion) {
 		return "Meh but works";
 	case 7:
 		return "Try again!";
-	default: ;
 	}
 
 	return nullptr;
 }
 
 // Change return type of the function
-const char* changeReturnType()
+const char* change_return_type()
 {
-	const char* wrongType = "asdf";
-	return wrongType;
+	std::string wrong_type = "asdf";
+	return wrong_type;
 };
 
 // Make data member mutable
-void makeMemberMutable()
+void make_member_mutable()
 {
 	const struct
 	{
-		mutable int n1;
-		mutable int n2;
+		int n1;
+		int n2;
 	}
 
-	constStruct = { 0, 0 };
+	const_struct = { 0, 0 };
 
-	constStruct.n1 = 2;
-	constStruct.n2 = 4;
+	const_struct.n1 = 2;
+	const_struct.n2 = 4;
 }
 
 // Usage of deprecated symbols
-class __declspec(deprecated) DeprecatedClass
+class __declspec(deprecated) deprecated_class
 {
 public:
 	__declspec(deprecated)
-		static int deprecatedFunction()
+		static int deprecated_function()
 	{
 		return 42;
 	}
@@ -53,16 +53,16 @@ public:
 
 static void globalFunction()
 {
-	auto p = DeprecatedClass::deprecatedFunction();
+	auto p = deprecated_class::deprecated_function();
 }
 
 // Usage of deleted functions
-struct typeWithDeletedFunc
+struct type_with_deleted_func
 {
-	typeWithDeletedFunc(int) = delete;
+	type_with_deleted_func(int) = delete;
 };
 
-void foo(typeWithDeletedFunc t) {}
+void foo(type_with_deleted_func t) {}
 
 void bar()
 {
@@ -70,13 +70,10 @@ void bar()
 }
 
 // May be const: local var, parameter, member function
-class myClass
+class my_class
 {
-private:
-	int x = 0;
-	int y = 0;
 public:
-	int getMeaningofLife(int factor)
+	int get_meaning_of_life(int factor)
 	{
 		return 42 * factor;
 	}
@@ -103,25 +100,20 @@ public:
 // Prefer C++ cast to C style cast
 void avoid_c_style_cast(char ch, double d, long long lng)
 {
-	int my_ch = static_cast<int>(ch);
-	int my_d = static_cast<int>(d);
-	int my_lng = static_cast<int>(lng);
-}
-
-// Invalid format specifiers, check the quick-fix
-void invalidFormatSpecifier(int num, char * str) {
-	printf("Input param: %d, %s", num, str);
+	int my_ch = (int)ch;
+	int my_d = (int)d;
+	int my_lng = (int)lng;
 }
 
 // Expression result unused inspection with a quick-fix.
 // Not all control paths return a value.
-int ExpressionResultUnused(int x)
+int expression_result_unused(int x)
 {
 	if (x == 1)
 		return 1;
 	else if (x == 2)
-		2; // Expression result unused / quick-fix to return unused expression
-	else
+		return 2; // Expression result unused / quick-fix to return unused expression
+	else if (x == 3)
 		return 3;
 }
 

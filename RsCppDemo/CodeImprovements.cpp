@@ -6,7 +6,7 @@
 #include <string>
 
 // Replace with constexpr when the condition is a compile-time constant expression (C++17)
-void constexprCase()
+void constexpr_case()
 {
 	if (sizeof(long) == 4)
 	{
@@ -15,9 +15,9 @@ void constexprCase()
 }
 
 // Convert to nested namespace definition (C++17)
-namespace One
+namespace one
 {
-	namespace Two
+	namespace two
 	{
 		namespace Three {
 			int GetMeaningOfLife()
