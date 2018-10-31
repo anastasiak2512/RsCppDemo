@@ -27,7 +27,7 @@
     <ClInclude Include="TODO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Measurements.h">
+    <ClInclude Include="Distance.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -53,9 +53,6 @@
     <ClCompile Include="CodeGeneration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PostfixTemplates.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Clang-Tidy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -66,9 +63,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="IncludesAnalyzer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Measurements.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
