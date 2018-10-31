@@ -19,8 +19,8 @@ namespace one
 {
 	namespace two
 	{
-		namespace Three {
-			int GetMeaningOfLife()
+		namespace three {
+			int get_meaning_of_life()
 			{
 				return 42;
 			}
