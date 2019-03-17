@@ -18,27 +18,6 @@ void usage() {
 	callPerson(&p);
 }
 
-// Introduce field for error message text, use Ctrl + Alt + D
-class ErrorHandler
-{
-	ErrorHandler()
-	{
-	}
-
-public:
-	void logError(std::exception& e)
-	{
-		auto errorLogFIle = fopen("log.txt", "w");
-		fprintf(errorLogFIle, "Something has failed: %s", e.what());
-		fclose(errorLogFIle);
-	}
-
-	void printError(std::exception& e)
-	{
-		printf("Something has failed: %s", e.what());
-	}
-};
-
 // Introduce namespace alias for One::Two, use Ctrl + Shift + R
 namespace one
 {

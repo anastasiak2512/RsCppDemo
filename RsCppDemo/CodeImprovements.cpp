@@ -17,13 +17,10 @@ void constexpr_case()
 // Convert to nested namespace definition (C++17)
 namespace one
 {
-	namespace two
-	{
-		namespace three {
-			int get_meaning_of_life()
-			{
-				return 42;
-			}
+	namespace two {
+		int get_meaning_of_life()
+		{
+			return 42;
 		}
 	}
 }
@@ -38,17 +35,6 @@ void joinDeclAssign()
 
 // C-cast instead of C++ style cast: get all proper casts automatically
 enum class Num { ONE = 1, TWO, THREE };
-
-class Base {
-public:
-	virtual void test() {}
-	virtual ~Base() {}
-};
-
-class Derived : public Base {
-public:
-	 void name() const {}
-};
 
 int answer() { return 42; }
 

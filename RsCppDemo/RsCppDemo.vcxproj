@@ -162,6 +162,7 @@
     <ClCompile Include="CodeImprovements.cpp" />
     <ClCompile Include="Formatter.cpp" />
     <ClCompile Include="IncludesAnalyzer.cpp" />
+    <ClCompile Include="Navigation.cpp" />
     <ClCompile Include="quickDoc.cpp" />
     <ClCompile Include="Refactoring.cpp" />
     <ClCompile Include="RsCppDemo.cpp" />

@@ -5,7 +5,7 @@
 #include <string>
 
 // Quick-fix to generate a missing default case in a switch statement
-inline const char* assessOperatingSystem(int windowsVersion) {
+inline const char* assess_operating_system(int windowsVersion) {
 	switch (windowsVersion) {
 	case 10:
 		return "Excellent!";
@@ -21,7 +21,7 @@ inline const char* assessOperatingSystem(int windowsVersion) {
 // Change return type of the function
 const char* change_return_type()
 {
-	std::string wrong_type = "asdf";
+	std::string wrong_type( "asdf", 4);
 	return wrong_type;
 };
 
@@ -69,7 +69,7 @@ void bar()
 	foo(1);
 }
 
-// May be const: local var, parameter, member function
+// May be const/static
 class my_class
 {
 public:
@@ -100,9 +100,9 @@ public:
 // Prefer C++ cast to C style cast
 void avoid_c_style_cast(char ch, double d, long long lng)
 {
-	int my_ch = (int)ch;
-	int my_d = (int)d;
-	int my_lng = (int)lng;
+	int my_ch = (int)(ch);
+	int my_d = (int)(d);
+	int my_lng = (int)(lng);
 }
 
 // Expression result unused inspection with a quick-fix.
@@ -122,5 +122,58 @@ void eqCheck(int& a, int& b) {
 	if (a = b) {
 		//...
 	}
+}
+
+// Overload resolution errors
+template<typename T, typename T::inner_type * = nullptr>
+void foo(T) {}
+
+struct X
+{
+	using inner_type = void;
+};
+
+struct Y {};
+
+void test_inner(X x, Y y)
+{
+	foo(x);
+	foo(y);
+}
+
+template<typename T, typename = decltype(T().method())>
+void bar(T);
+
+struct XM
+{
+	void method() {};
+};
+
+struct YM {};
+
+void test_method(XM x, YM y)
+{
+	bar(x);
+	bar(y);
+}
+
+struct A {};
+template<class T,
+	typename = std::enable_if_t<std::is_integral<T>::value>>
+	void do_stuff() {}
+
+void test_cond()
+{
+	do_stuff<A>();
+}
+
+struct P
+{
+	P() = delete;
+};
+
+void test_pair()
+{
+	std::pair<int, P>();
 }
 

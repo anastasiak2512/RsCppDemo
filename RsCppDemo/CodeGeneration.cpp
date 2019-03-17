@@ -17,4 +17,16 @@ private:
 public:
 
 
+	MyDistance(int feet, int inches)
+		: feet(feet),
+		  inches(inches)
+	{
+	}
+
+	friend std::ostream& operator<<(std::ostream& os, const MyDistance& obj)
+	{
+		return os
+			<< "feet: " << obj.feet
+			<< " inches: " << obj.inches;
+	}
 };
